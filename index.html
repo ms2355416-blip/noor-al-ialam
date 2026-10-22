@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b3d2e">
+  <meta name="description" content="نور الإسلام - القرآن الكريم، مواقيت الصلاة للإسكندرية، والسبحة الإلكترونية.">
+  <title>نور الإسلام</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="#home">☪ نور الإسلام</a>
+  <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
+  <nav id="nav">
+    <a href="#prayers">مواقيت الصلاة</a>
+    <a href="#quran">القرآن الكريم</a>
+    <a href="#tasbeeh">السبحة</a>
+    <a href="#azkar">أذكار مختارة</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="pattern" aria-hidden="true"></div>
+  <h1>نور الإسلام</h1>
+  <p class="ayah">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</p>
+  <p>رفيقك اليومي للقرآن والذكر والصلاة</p>
+  <div class="cards-row hero-cards">
+    <div class="info-card">
+      <h3>مواقيت الصلاة</h3>
+      <p class="muted">الإسكندرية، مصر</p>
+      <p id="nextPrayer" class="big">جارٍ تحميل المواقيت…</p>
+      <button class="btn ghost" id="refreshPrayer">تحديث المواقيت</button>
+    </div>
+    <div class="info-card">
+      <h3>وردك من القرآن</h3>
+      <p class="info-card text">ابدأ يومك بآيات من كتاب الله</p>
+      <a class="btn" href="#quran">اقرأ القرآن</a>
+    </div>
+  </div>
+</section>
+
+<section id="prayers">
+  <h2>🕌 مواقيت الصلاة — الإسكندرية</h2>
+  <p class="muted" id="prayerNote">يتم جلب المواقيت عبر الإنترنت. تأكد منها من مصدر محلي موثوق عند الحاجة.</p>
+  <div class="prayer-grid" id="prayerGrid"><p>جارٍ تحميل مواقيت الصلاة…</p></div>
+</section>
+
+<section id="quran">
+  <h2>📖 القرآن الكريم</h2>
+  <p>اختر سورة لعرض آياتها والاستماع إلى التلاوة.</p>
+  <input class="input" id="surahSearch" type="search" placeholder="ابحث عن سورة…" aria-label="ابحث عن سورة">
+  <div class="surah-list" id="surahList"><p>جارٍ تحميل قائمة السور…</p></div>
+  <div class="reader hidden" id="reader">
+    <h3 id="surahTitle"></h3>
+    <audio id="audio" controls preload="none" aria-label="تلاوة السورة"></audio>
+    <div class="ayahs" id="ayahs"></div>
+    <button class="btn ghost" id="closeReader">إغلاق السورة</button>
+  </div>
+  <p class="muted small">يتطلب عرض السور والتلاوة اتصالًا بالإنترنت.</p>
+</section>
+
+<section id="tasbeeh">
+  <h2>📿 السبحة الإلكترونية</h2>
+  <p class="muted">اختر الذكر، ثم اضغط على السبحة للعدّ.</p>
+  <div class="chips" id="dhikrChoices">
+    <button class="chip on" data-dhikr="سبحان الله">سبحان الله</button>
+    <button class="chip" data-dhikr="الحمد لله">الحمد لله</button>
+    <button class="chip" data-dhikr="الله أكبر">الله أكبر</button>
+    <button class="chip" data-dhikr="أستغفر الله">أستغفر الله</button>
+    <button class="chip" data-dhikr="لا إله إلا الله">لا إله إلا الله</button>
+  </div>
+  <p class="target">الذكر الحالي: <strong id="currentDhikr">سبحان الله</strong></p>
+  <p>العدد</p>
+  <button class="tasbeeh-btn" id="countBtn" aria-label="زيادة عداد التسبيح">
+    <span id="count">0</span>
+    <small>اضغط للتسبيح</small>
+  </button>
+  <p>الهدف:
+    <select class="input target-select" id="targetCount" aria-label="هدف التسبيح">
+      <option value="33">٣٣ مرة</option>
+      <option value="99">٩٩ مرة</option>
+      <option value="100">١٠٠ مرة</option>
+      <option value="0">بدون هدف</option>
+    </select>
+  </p>
+  <p id="targetMessage" class="muted" aria-live="polite">بالتوفيق، تقبّل الله منك.</p>
+  <button class="btn ghost" id="resetCount">إعادة العداد</button>
+</section>
+
+<section id="azkar">
+  <h2>✨ أذكار مختارة</h2>
+  <div class="grid">
+    <article class="card">
+      <h3>ذكر الصباح والمساء</h3>
+      <p class="text">رَضِيتُ بِاللَّهِ رَبًّا، وَبِالإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا.</p>
+      <p class="src">يُرجى مراجعة الأذكار من مصدر موثوق لمعرفة الصيغة والعدد الواردين.</p>
+    </article>
+    <article class="card">
+      <h3>الاستغفار</h3>
+      <p class="text">أستغفر الله وأتوب إليه.</p>
+      <button class="btn ghost copyDhikr" data-copy="أستغفر الله وأتوب إليه.">نسخ الذكر</button>
+    </article>
+    <article class="card">
+      <h3>الصلاة على النبي ﷺ</h3>
+      <p class="text">اللهم صلِّ وسلم على نبينا محمد.</p>
+      <button class="btn ghost copyDhikr" data-copy="اللهم صلِّ وسلم على نبينا محمد.">نسخ الذكر</button>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>نور الإسلام ☪</p>
+  <p class="muted small">موقع توعوي بسيط — نسأل الله أن ينفع به.</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
